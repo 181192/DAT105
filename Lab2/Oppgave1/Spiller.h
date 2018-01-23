@@ -5,11 +5,15 @@
 #ifndef OPPGAVE1_SPILLER_H
 #define OPPGAVE1_SPILLER_H
 
+#include <ostream>
 #include "Konto.h"
 #include "../../std_lib_facilities.h"
+#include "Transaksjon.h"
 
 class Spiller {
 public:
+
+    int getId() const;
 
     const string &getNavn() const;
 
@@ -23,12 +27,15 @@ public:
 
     bool uttak(double n);
 
-    Spiller(int id, string navn, Konto konto);
+    Spiller(int id, string navn, Konto konto, vector<Transaksjon> &transaksjoner);
+
+    const Vector<Transaksjon> &getTransaksjoner() const;
 
 private:
     int id;
     string navn;
     Konto konto;
+    vector<Transaksjon> transaksjoner;
 
     bool sjekkDesimal(double n);
 

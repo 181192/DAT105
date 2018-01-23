@@ -6,6 +6,8 @@
 #define OPPGAVE1_KONTO_H
 
 
+#include <ostream>
+
 class Konto {
 public:
 
@@ -24,6 +26,7 @@ public:
     double getBeholdning() const;
 
     Type getType() const;
+
 
 private:
     int id;

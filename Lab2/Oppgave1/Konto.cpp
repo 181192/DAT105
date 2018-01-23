@@ -21,3 +21,5 @@ bool Konto::uttak(double n) {
 bool Konto::innskudd(double n) {
     return (n < 0) ? false : (beholdning += n), true;
 }
+
+

@@ -4,6 +4,10 @@
 
 #include "Spiller.h"
 
+int Spiller::getId() const {
+    return id;
+}
+
 const string &Spiller::getNavn() const {
     return navn;
 }
@@ -20,7 +24,13 @@ Konto::Type Spiller::getType() const {
     return konto.getType();
 }
 
-Spiller::Spiller(int id, string navn, Konto konto) : id(id), navn(navn), konto(konto) {}
+
+const Vector<Transaksjon> &Spiller::getTransaksjoner() const {
+    return transaksjoner;
+}
+
+Spiller::Spiller(int id, string navn, Konto konto, vector<Transaksjon> &transaksjoner)
+        : id(id), navn(navn), konto(konto), transaksjoner(transaksjoner) {}
 
 /**
  * Returnerer true hvis antall desimalerer er under 8
@@ -55,7 +65,9 @@ bool Spiller::uttak(double n) {
 
 bool Spiller::betal(Spiller &spiller, double belop) {
     if (konto.getType() == spiller.getType()) {
-        return uttak(belop) && spiller.innskudd(belop);
+        return uttak(belop) &&
+               (transaksjoner.push_back(Transaksjon(id, spiller.getId(), belop)), spiller.innskudd(belop));
     }
     return false;
 }
+
