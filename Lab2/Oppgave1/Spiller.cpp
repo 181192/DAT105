@@ -33,20 +33,10 @@ Spiller::Spiller(int id, string navn, Konto konto, vector<Transaksjon> &transaks
         : id(id), navn(navn), konto(konto), transaksjoner(transaksjoner) {}
 
 /**
- * Returnerer true hvis antall desimalerer er under 8
+ * Returnerer true hvis antall desimaler er under 8
  */
-bool Spiller::sjekkDesimal(double i) {
-    int a = 0;
-    if (i < 0)
-        i *= -1;
-    else if (i == 0)
-        i = 1;
-
-    while (i > 0) {
-        i /= 10;
-        a++;
-    }
-    return a < 8;
+bool Spiller::sjekkDesimal(double n) {
+    return fmod(n * 100000000, 1) == 0;
 }
 
 bool Spiller::innskudd(double n) {
@@ -69,5 +59,10 @@ bool Spiller::betal(Spiller &spiller, double belop) {
                (transaksjoner.push_back(Transaksjon(id, spiller.getId(), belop)), spiller.innskudd(belop));
     }
     return false;
+}
+
+ostream &operator<<(ostream &os, const Spiller &spiller) {
+    os << "id: " << spiller.id << " navn: " << spiller.navn << " konto: " << spiller.konto;
+    return os;
 }
 

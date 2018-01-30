@@ -23,14 +23,17 @@ public:
 
     Konto::Type getType() const;
 
+    const Vector<Transaksjon> &getTransaksjoner() const;
+
     bool innskudd(double n);
 
     bool uttak(double n);
 
+    bool betal(Spiller &spiller, double belop);
+
     Spiller(int id, string navn, Konto konto, vector<Transaksjon> &transaksjoner);
 
-    const Vector<Transaksjon> &getTransaksjoner() const;
-
+    friend ostream &operator<<(ostream &os, const Spiller &spiller);
 private:
     int id;
     string navn;
@@ -38,8 +41,6 @@ private:
     vector<Transaksjon> transaksjoner;
 
     bool sjekkDesimal(double n);
-
-    bool betal(Spiller &spiller, double belop);
 };
 
 

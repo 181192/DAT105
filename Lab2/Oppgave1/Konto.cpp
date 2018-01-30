@@ -22,4 +22,9 @@ bool Konto::innskudd(double n) {
     return (n < 0) ? false : (beholdning += n), true;
 }
 
+std::ostream &operator<<(std::ostream &os, const Konto &konto) {
+    os << "id: " << konto.id << " beholdning: " << konto.beholdning << " type: " << konto.type;
+    return os;
+}
+
 

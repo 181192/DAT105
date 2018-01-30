@@ -27,6 +27,7 @@ public:
 
     Type getType() const;
 
+    friend std::ostream &operator<<(std::ostream &os, const Konto &konto);
 
 private:
     int id;
