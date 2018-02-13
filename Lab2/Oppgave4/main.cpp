@@ -9,7 +9,7 @@
  * @return bit-verdien i posisjon k
  */
 int bitVerdiTilPosisjon(unsigned short n, int k) {
-    return 0;
+    return (n & (1 << k)) >> k;
 }
 
 
