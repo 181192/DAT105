@@ -29,8 +29,10 @@ const Vector<Transaksjon> &Spiller::getTransaksjoner() const {
     return transaksjoner;
 }
 
-Spiller::Spiller(int id, string navn, Konto konto, vector<Transaksjon> &transaksjoner)
-        : id(id), navn(navn), konto(konto), transaksjoner(transaksjoner) {}
+Spiller::Spiller(int id, string navn, Konto konto)
+        : id(id), navn(navn), konto(konto) {
+    vector<Transaksjon> *transaksjoner = new vector<Transaksjon>();
+}
 
 /**
  * Returnerer true hvis antall desimaler er under 8
@@ -41,28 +43,39 @@ bool Spiller::sjekkDesimal(double n) {
 
 bool Spiller::innskudd(double n) {
     if (konto.getType() == Konto::bitcoin) {
-        return sjekkDesimal(n) ? konto.innskudd(n) : false;
+        return sjekkDesimal(n) && konto.innskudd(n);
     }
     return konto.innskudd(n);
 }
 
 bool Spiller::uttak(double n) {
     if (konto.getType() == Konto::bitcoin) {
-        return sjekkDesimal(n) ? konto.uttak(n) : false;
+        return sjekkDesimal(n) && konto.uttak(n);
     }
     return konto.uttak(n);
 }
 
 bool Spiller::betal(Spiller &spiller, double belop) {
-    if (konto.getType() == spiller.getType()) {
-        return uttak(belop) &&
-               (transaksjoner.push_back(Transaksjon(id, spiller.getId(), belop)), spiller.innskudd(belop));
-    }
-    return false;
+    return konto.getType() == spiller.getType()
+           && uttak(belop)
+           && (transaksjoner.push_back(Transaksjon(id, spiller.getId(), belop, "transaksjoner.txt")),
+            spiller.innskudd(belop));
 }
 
 ostream &operator<<(ostream &os, const Spiller &spiller) {
-    os << "id: " << spiller.id << " navn: " << spiller.navn << " konto: " << spiller.konto;
+    os << "id: " << spiller.id << ", navn: " << spiller.navn << ", konto: { " << spiller.konto << " }";
     return os;
+}
+
+void Spiller::operator+(Spiller &spiller) {
+    Spiller::betal(*this, spiller.getBeholdning());
+}
+
+void Spiller::operator-(Spiller &spiller) {
+    Spiller::betal(spiller, getBeholdning());
+}
+
+bool Spiller::operator==(const Spiller &spiller) {
+    return id == spiller.id && navn.compare(spiller.navn) && konto == spiller.konto;
 }
 

@@ -7,6 +7,7 @@
 
 
 #include <ostream>
+#include "../../std_lib_facilities.h"
 
 class Konto {
 public:
@@ -27,7 +28,8 @@ public:
 
     Type getType() const;
 
-    friend std::ostream &operator<<(std::ostream &os, const Konto &konto);
+    friend ostream &operator<<(ostream &os, const Konto &konto);
+    bool operator==(Konto konto);
 
 private:
     int id;

@@ -7,6 +7,7 @@
 
 
 #include <ostream>
+#include "../../std_lib_facilities.h"
 
 class Transaksjon {
 public:
@@ -22,14 +23,21 @@ public:
 
     void setBelop(double belop);
 
-    Transaksjon(int fraId, int tilId, double belop);
+    const string &getFilnavn() const;
 
-    friend std::ostream &operator<<(std::ostream &os, const Transaksjon &transaksjon);
+    void setFilnavn(const string &filnavn);
+
+    Transaksjon(int fraId, int tilId, double belop, string filnavn);
+
+    ~Transaksjon() = default;
+
+    friend ostream &operator<<(ostream &os, const Transaksjon &transaksjon);
 
 private:
     int fraId;
     int tilId;
     double belop;
+    string filnavn;
 };
 
 

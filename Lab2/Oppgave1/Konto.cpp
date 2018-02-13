@@ -15,11 +15,11 @@ Konto::Type Konto::getType() const {
 }
 
 bool Konto::uttak(double n) {
-    return (n < 0 && beholdning < n) ? false : (beholdning -= n), true;
+    return n >= 0 && beholdning >= n && ((beholdning -= n), true);
 }
 
 bool Konto::innskudd(double n) {
-    return (n < 0) ? false : (beholdning += n), true;
+    return n >= 0 && ((beholdning += n), true);
 }
 
 std::ostream &operator<<(std::ostream &os, const Konto &konto) {
@@ -27,4 +27,7 @@ std::ostream &operator<<(std::ostream &os, const Konto &konto) {
     return os;
 }
 
+bool Konto::operator==(Konto konto) {
+    return this->id == konto.id && this->beholdning == konto.beholdning && this->type == konto.type;
 
+}

@@ -31,9 +31,14 @@ public:
 
     bool betal(Spiller &spiller, double belop);
 
-    Spiller(int id, string navn, Konto konto, vector<Transaksjon> &transaksjoner);
+    Spiller(int id, string navn, Konto konto);
+    ~Spiller() = default;
 
     friend ostream &operator<<(ostream &os, const Spiller &spiller);
+    void operator+(Spiller &spiller);
+    void operator-(Spiller &spiller);
+    bool operator==(const Spiller &spiller);
+
 private:
     int id;
     string navn;
