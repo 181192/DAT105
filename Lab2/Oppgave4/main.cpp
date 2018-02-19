@@ -31,7 +31,7 @@ int antallBitSattTilEn(unsigned short n) {
  * @return hoyeste bit, ellers -1 hvis det ikke finnes noen 1'ere
  */
 int hoyesteBitSattTilEn(unsigned short n) {
-    return 0;
+    return 1 << (int) log2(n);
 }
 
 /**
@@ -86,6 +86,13 @@ int main() {
 //
 //    // clear i'th bit
 //    cout << (n&(~(1<<k))) << endl;
+
+    unsigned int count = 0;
+    while (n) {
+        cout << n << endl;
+        count += n & 1;
+        n >>= 1;
+    }
 
 
     cout << bitVerdiTilPosisjon(n, k) << endl;
