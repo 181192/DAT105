@@ -11,6 +11,7 @@
  */
 template<class T>
 class StackADT {
+public:
     /**
      * Adding a new element to the top off the stack
      * @param element The element to add
@@ -27,13 +28,13 @@ class StackADT {
      * Returning a pointer to the top element of the stack
      * @return pointer to the top element
      */
-    virtual T top()= 0;
+    virtual T peek()= 0;
 
     /**
      * True or false if the stack is empty
      * @return true if empty
      */
-    virtual bool empty()= 0;
+    virtual bool isEmpty()= 0;
 
     /**
      * Returning the number of elements in the stack

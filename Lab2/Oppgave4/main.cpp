@@ -31,7 +31,7 @@ int antallBitSattTilEn(unsigned short n) {
  * @return hoyeste bit, ellers -1 hvis det ikke finnes noen 1'ere
  */
 int hoyesteBitSattTilEn(unsigned short n) {
-    return 1 << (int) log2(n);
+    return n == 0 ? -1 : 1 << (int) log2(n);
 }
 
 /**
