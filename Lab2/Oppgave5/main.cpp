@@ -2,27 +2,21 @@
 #include "../../std_lib_facilities.h"
 #include "StackADT.h"
 #include "StackArray.h"
-#include "Tull.h"
 
 int main() {
     string s = "netsket re etteD";
     int i = 100;
+    auto *stack = new StackArray<char>(100);
 
-    Tull tull(10);
+    for (char c : s)
+        stack->push(c);
 
-    StackArray<Tull> stack(100);
-
-    stack.push(tull);
-
-//    for (char c : s)
-//        stack.push(c);
-
-//    cout << s << endl;
-//    while (!stack.isEmpty()) {
-//        char c = stack.pop();
-//        cout << c;
-//    }
-//    cout << endl;
+    cout << s << endl;
+    while (!stack->isEmpty()) {
+        char c = stack->pop();
+        cout << c;
+    }
+    cout << endl;
 
     return 0;
 }
