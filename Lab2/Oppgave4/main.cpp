@@ -9,7 +9,7 @@
  * @return bit-verdien i posisjon k
  */
 int bitVerdiTilPosisjon(unsigned short n, int k) {
-    return (n & (1 << k)) >> k;
+    return n & (1 << k);
 }
 
 
@@ -19,7 +19,10 @@ int bitVerdiTilPosisjon(unsigned short n, int k) {
  * @return antall bit som er satt til 1
  */
 int antallBitSattTilEn(unsigned short n) {
-    return 0;
+    if (n == 0)
+        return 0;
+    else
+        return (n & 1) + antallBitSattTilEn(n >> 1);
 }
 
 /**
@@ -73,6 +76,17 @@ int hoyesteBitSattTilEnTilVenstreFor(unsigned short n, int k) {
 int main() {
     unsigned short n = 170; // 010101010
     int k = 4;
+
+
+//    // get i'th bit
+//    cout << (n&(1<<k)) << endl;
+//
+//    // set i'th bit
+//    cout << (n|(1<<k)) << endl;
+//
+//    // clear i'th bit
+//    cout << (n&(~(1<<k))) << endl;
+
 
     cout << bitVerdiTilPosisjon(n, k) << endl;
     cout << antallBitSattTilEn(n) << endl;
