@@ -56,8 +56,7 @@ int speilvendBitmonsteret(unsigned short n) {
  * @return true dersom den er symmetrisk, false ellers
  */
 bool erSymmetrisk(unsigned short n) {
-
-    return 0;
+    return (n & speilvendBitmonsteret(n)) != 0;
 }
 
 /**
@@ -67,7 +66,9 @@ bool erSymmetrisk(unsigned short n) {
  * @return hoyeste bit ellers -1 hvis det ikke finnes noen 1'ere
  */
 int hoyesteBitSattTilEnTilHoyreFor(unsigned short n, int k) {
-    return 0;
+    for (int i = k; i < sizeof(n)*8; i++)
+        n &= ~(1 << i);
+    return hoyesteBitSattTilEn(n);
 }
 
 /**
@@ -77,30 +78,22 @@ int hoyesteBitSattTilEnTilHoyreFor(unsigned short n, int k) {
  * @return hoyeste bit ellers -1 hvis det ikke finnes noen 1'ere
  */
 int hoyesteBitSattTilEnTilVenstreFor(unsigned short n, int k) {
-    return 0;
+    for (int i = 0; i <= k; i++)
+        n &= ~(1 << i);
+    return hoyesteBitSattTilEn(n);
 }
 
 int main() {
     unsigned short n = 170; // 010101010
-    int k = 3;
-
-
-//    // get i'th bit
-//    cout << (n&(1<<k)) << endl;
-//
-//    // set i'th bit
-//    cout << (n|=(1<<k)) << endl;
-//
-//    // clear i'th bit
-//    cout << (n&(~(1<<k))) << endl;
-
-    cout << sizeof(170) << endl;
+    unsigned short j = 6;
+    int k = 5;
 
     cout << bitVerdiTilPosisjon(n, k) << endl;
     cout << antallBitSattTilEn(n) << endl;
     cout << hoyesteBitSattTilEn(n) << endl;
     cout << speilvendBitmonsteret(n) << endl;
     cout << erSymmetrisk(n) << endl;
+    cout << erSymmetrisk(j) << endl;
     cout << hoyesteBitSattTilEnTilHoyreFor(n, k) << endl;
     cout << hoyesteBitSattTilEnTilVenstreFor(n, k) << endl;
 
