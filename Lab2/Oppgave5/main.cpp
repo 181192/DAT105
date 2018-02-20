@@ -1,12 +1,10 @@
 #include <iostream>
 #include "../../std_lib_facilities.h"
-//#include "StackADT.h"
-#include "StackArray.cpp"
+#include "StackArray.h"
 
 int main() {
     string s = "netsket re etteD";
-    int i = 100;
-    auto *stack = new StackArray<char>(100);
+    auto *stack = new StackArray<char>();
 
     for (char c : s)
         stack->push(c);

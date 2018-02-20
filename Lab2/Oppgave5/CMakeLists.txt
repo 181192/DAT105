@@ -3,4 +3,4 @@ project(Oppgave5)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Oppgave5 StackArray.cpp StackArray.h StackADT.h main.cpp)
+add_executable(Oppgave5 StackArray.h StackADT.h main.cpp)

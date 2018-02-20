@@ -11,21 +11,44 @@ template<class T>
 class StackArray : public StackADT<T> {
 public:
 
-    StackArray();
+    StackArray() : top(0), stacksize(STDK) {
+        stack = new T[STDK];
+    }
 
-    explicit StackArray(int size);
+    explicit StackArray(int size) : top(0), stacksize(size) {
+        stack = new T[size];
+    }
 
     ~StackArray() = default;
 
-    void push(T element) override;
+    void push(T element) override {
+        if (size() == stacksize) {
+            extend();
+        }
+        stack[top] = element;
+        top++;
+    }
 
-    T pop() override;
+    T pop() override {
+        T *result = nullptr;
+        if (!isEmpty()) {
+            top--;
+            result = stack + top;
+        }
+        return *result;
+    }
 
-    T* peek() override;
+    T *peek() override {
+        return isEmpty() ? nullptr : stack + (top - 1);
+    };
 
-    bool isEmpty() override;
+    bool isEmpty() override {
+        return top == 0;
+    }
 
-    int size() override;
+    int size() override {
+        return top;
+    }
 
 private:
     const int STDK = 100;
@@ -33,7 +56,14 @@ private:
     T *stack;
     int stacksize;
 
-    void extend();
+    void extend() {
+        auto *tmp = new T[stacksize * 2];
+
+        for (int i = 0; i < stacksize; i++)
+            tmp[i] = stack[i];
+        stacksize <<= 1;
+        stack = tmp;
+    }
 };
 
 
