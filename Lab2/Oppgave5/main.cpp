@@ -1,7 +1,7 @@
 #include <iostream>
 #include "../../std_lib_facilities.h"
-#include "StackADT.h"
-#include "StackArray.h"
+//#include "StackADT.h"
+#include "StackArray.cpp"
 
 int main() {
     string s = "netsket re etteD";

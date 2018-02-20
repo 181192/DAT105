@@ -21,14 +21,11 @@ public:
 
     T pop() override;
 
-    T peek() override;
+    T* peek() override;
 
     bool isEmpty() override;
 
     int size() override;
-
-    template<typename G, unsigned S>
-    inline unsigned length(const G (&v)[S]) { return S; }
 
 private:
     const int STDK = 100;

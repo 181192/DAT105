@@ -1,5 +1,5 @@
 //
-// Created by k on 17.02.18.
+// Created by k on 19.02.18.
 //
 
 #ifndef OPPGAVE5_STACKADT_H
@@ -28,7 +28,7 @@ public:
      * Returning a pointer to the top element of the stack
      * @return pointer to the top element
      */
-    virtual T peek()= 0;
+    virtual T* peek()= 0;
 
     /**
      * True or false if the stack is empty
@@ -42,6 +42,5 @@ public:
      */
     virtual int size()= 0;
 };
-
 
 #endif //OPPGAVE5_STACKADT_H

@@ -15,18 +15,17 @@ void StackArray<T>::push(T element) {
 
 template<class T>
 T StackArray<T>::pop() {
-    T result = nullptr;
+    T *result = nullptr;
     if (!isEmpty()) {
         top--;
-        result = stack[top];
-        stack[top] = nullptr;
+        result = stack+top;
     }
-    return result;
+    return *result;
 }
 
 template<class T>
-T StackArray<T>::peek() {
-    return isEmpty() ? nullptr : stack[top - 1];
+T* StackArray<T>::peek() {
+    return isEmpty() ? nullptr : stack+(top - 1);
 }
 
 template<class T>
@@ -40,7 +39,7 @@ int StackArray<T>::size() {
 }
 
 template<class T>
-StackArray<T>::StackArray() : top(0), stacksize(0) {
+StackArray<T>::StackArray() : top(0), stacksize(STDK) {
     stack = new T[STDK];
 }
 
@@ -56,6 +55,6 @@ void StackArray<T>::extend() {
 
     for (int i = 0; i < stacksize; i++)
         tmp[i] = stack[i];
-
+    stacksize<<=1;
     stack = tmp;
 }
