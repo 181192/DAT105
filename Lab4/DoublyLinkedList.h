@@ -5,14 +5,16 @@
 #ifndef LAB4_DOUBLYLINKEDLIST_H
 #define LAB4_DOUBLYLINKEDLIST_H
 
+#include <ostream>
 #include "ListADT.h"
-#include "DoubleNode.h"
+#include "Node.h"
+#include "../std_lib_facilities.h"
 
 template<class T>
 class DoublyLinkedList : public ListADT<T> {
 public:
 
-    DoublyLinkedList(DoubleNode<T> *first, DoubleNode<T> *last) : first(first), last(last), count(0) {}
+    explicit DoublyLinkedList(Node<T> *first, Node<T> *last) : first(first), last(last), count(0) {}
 
     DoublyLinkedList() {
         first = nullptr;
@@ -22,41 +24,108 @@ public:
 
     virtual ~DoublyLinkedList() = default;
 
+    void addFirst(T *element) override {
+        auto *tmp = new Node<T>();
+
+        tmp->setElement(element);
+        tmp->setNext(first);
+        tmp->setPrevious(nullptr);
+
+        if (first != nullptr)
+            first->setPrevious(tmp);
+
+        first = tmp;
+        count++;
+    }
+
+    void addLast(T *element) override {
+        auto *tmp = new Node<T>();
+        auto *p = last;
+        tmp->setElement(element);
+        tmp->setNext(nullptr);
+        if (count == 0) {
+            tmp->setPrevious(nullptr);
+            last = tmp;
+            return;
+        }
+
+        while (p->getNext() != nullptr)
+            p = p->getNext();
+
+        p->setNext(tmp);
+        tmp->setPrevious(p);
+        count++;
+    }
+
     T *removeFirst() override {
-        return nullptr;
+        return first->getNext()->setPrevious(nullptr), first->getElement();
     }
 
     T *removeLast() override {
+        return last->getPrevious()->setNext(nullptr), last->getElement();
+    }
+
+    T *find(T *element) override {
+        Node<T> *tmp = first;
+        while (tmp != nullptr) {
+            if (tmp->getElement() == element)
+                return tmp->getElement();
+            tmp = tmp->getNext();
+        }
         return nullptr;
     }
 
-    T *find() override {
-        return nullptr;
+    T *remove(T *element) override {
+        Node<T> *tmp = first;
+        while (tmp != nullptr) {
+            if (tmp->getElement() == element)
+                break;
+            tmp = tmp->getNext();
+        }
+
+        if (first == nullptr)
+            return nullptr;
+
+        if (first == tmp)
+            first = tmp->getNext();
+
+        if (tmp->getNext() != nullptr)
+            tmp->getNext()->setPrevious(tmp->getPrevious());
+
+        return tmp->getElement();
     }
 
-    T *remove() override {
-        return nullptr;
+    T *getFirst() override {
+        return first->getElement();
     }
 
-    T *first() override {
-        return nullptr;
+    T *getLast() override {
+        return last->getElement();
     }
 
-    T *last() override {
-        return nullptr;
-    }
-
-    bool contains() override {
+    bool contains(T *element) override {
         return false;
     }
 
     bool isEmpty() override {
-        return false;
+        return count == 0;
+    }
+
+    int size() override {
+        return count;
+    }
+
+    void display() {
+        Node<T> *tmp = first;
+        while (tmp != nullptr) {
+            cout << *tmp->getElement() << endl;
+            tmp = tmp->getNext();
+        }
     }
 
 private:
-    DoubleNode<T> *first;
-    DoubleNode<T> *last;
+    Node<T> *first;
+    Node<T> *last;
     int count;
 
 };

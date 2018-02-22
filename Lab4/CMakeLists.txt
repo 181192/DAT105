@@ -3,4 +3,4 @@ project(Lab4)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Lab4 main.cpp DoubleNode.h DoublyLinkedList.h ListADT.h)
+add_executable(Lab4 main.cpp Node.h DoublyLinkedList.h ListADT.h Test.cpp Test.h)
