@@ -95,12 +95,12 @@ public:
         return tmp->getElement();
     }
 
-    T *getFirst() override {
-        return first->getElement();
+    Node<T> *getFirst() override {
+        return first;
     }
 
-    T *getLast() override {
-        return last->getElement();
+    Node<T> *getLast() override {
+        return last;
     }
 
     bool contains(T *element) override {

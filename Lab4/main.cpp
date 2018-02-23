@@ -14,5 +14,9 @@ int main() {
 
     list->display();
 
+    list->remove(tull);
+    list->remove(tull);
+
+    list->display();
     return 0;
 }

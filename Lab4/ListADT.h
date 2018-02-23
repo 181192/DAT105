@@ -5,6 +5,8 @@
 #ifndef LAB4_LISTADT_H
 #define LAB4_LISTADT_H
 
+#include "Node.h"
+
 template<class T>
 class ListADT {
 public:
@@ -47,14 +49,14 @@ public:
     virtual T *remove(T *element) = 0;
 
     /**
-    * return a pointer to the first element in the list.
+    * return a pointer to the first node in the list.
     */
-    virtual T *getFirst() = 0;
+    virtual Node<T> *getFirst() = 0;
 
     /**
-    * Return a pointer to the last element in the list.
+    * Return a pointer to the last node in the list.
     */
-    virtual T *getLast() = 0;
+    virtual Node<T> *getLast() = 0;
 
     /**
     * Return true if the given value is found in the list,
