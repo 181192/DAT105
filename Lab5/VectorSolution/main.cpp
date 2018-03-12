@@ -65,6 +65,7 @@ string vectorToString2(vector<T> &v) {
     for_each(v.begin(), v.end(), [&](T &e) {
         ss << e << " ";
     });
+    return ss.str();
 }
 
 int main() {
