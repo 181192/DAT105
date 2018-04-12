@@ -7,6 +7,7 @@
 
 
 class Edge;
+
 class Enode;
 
 class PriorityQueue {

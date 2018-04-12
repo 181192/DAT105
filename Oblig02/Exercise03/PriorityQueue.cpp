@@ -32,12 +32,10 @@ void PriorityQueue::add(Edge *el) {
     if (isEmpty()) {
         first = nynode;
         last = nynode;
-    }
-    else if (forrige == nullptr){
+    } else if (forrige == nullptr) {
         first = nynode;
         nynode->setNext(denne);
-    }
-    else {
+    } else {
         forrige->setNext(nynode);
         nynode->setNext(denne);
     }
@@ -48,6 +46,7 @@ void PriorityQueue::add(Edge *el) {
 
     size++;
 }
+
 Edge *PriorityQueue::remove() {
     Edge *tmp = first->getEdge();
     first = first->getNext();
@@ -59,9 +58,6 @@ Edge *PriorityQueue::remove() {
 bool PriorityQueue::isEmpty() {
     return size == 0;
 }
-
-
-
 
 
 Enode *PriorityQueue::getFirst() const {

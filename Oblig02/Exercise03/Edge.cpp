@@ -4,7 +4,7 @@
 
 #include "Edge.h"
 
-Edge::Edge(Node* v, Node* w, int wt, bool d){
+Edge::Edge(Node *v, Node *w, int wt, bool d) {
     endpoint[0] = v;
     endpoint[1] = w;
     weight = wt;
