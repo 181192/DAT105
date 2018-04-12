@@ -1,0 +1,22 @@
+#ifndef DBMANAGER_H
+#define DBMANAGER_H
+#include <QSqlDatabase>
+
+class DbManager
+{
+public:
+    DbManager(const QString& path);
+    ~DbManager();
+
+    bool isOpen() const;
+    bool createTable();
+    bool addPerson(const QString& name);
+    bool removePerson(const QString& name);
+    bool personExists(const QString& name) const;
+    void printAllPersons() const;
+    bool removeAllPersons();
+private:
+    QSqlDatabase db;
+};
+
+#endif // DBMANAGER_H
