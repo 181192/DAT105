@@ -6,7 +6,7 @@
 #include "PriorityQueue.h"
 
 #include "Enode.h"
-#include "../graf/edge.h"
+#include "Edge.h"
 
 PriorityQueue::PriorityQueue() {
     first = nullptr;
