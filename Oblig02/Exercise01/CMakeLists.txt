@@ -3,4 +3,4 @@ project(Exercise01)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Exercise01 main.cpp)
+add_executable(Exercise01 main.cpp IteratorADT.h VectorImpl.h ListImpl.h IteratorImpl.h)
