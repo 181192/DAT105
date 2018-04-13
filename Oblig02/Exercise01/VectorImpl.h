@@ -14,6 +14,15 @@ template<class Iterator, class T>
 class VectorImpl {
 
 public:
+
+    void run(Iterator &it);
+
+    VectorImpl();
+
+    virtual ~VectorImpl();
+
+private:
+
     int vectorSum1(std::vector<int> v);
 
     int vectorSum2(std::vector<int> v);
@@ -25,13 +34,6 @@ public:
     std::string vectorToString1(std::vector<T> &v);
 
     std::string vectorToString2(std::vector<T> &v);
-
-    void run(Iterator &it);
-
-    VectorImpl();
-
-    virtual ~VectorImpl();
-
 };
 
 template<class Iterator, class T>

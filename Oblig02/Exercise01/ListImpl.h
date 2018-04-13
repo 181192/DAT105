@@ -14,6 +14,14 @@ template<class Iterator, class T>
 class ListImpl {
 public:
 
+    void run(Iterator &it) ;
+
+    ListImpl();
+
+    virtual ~ListImpl();
+
+private:
+
     int listSum1(std::list<T> v);
 
     int listSum2(std::list<T> v);
@@ -25,12 +33,6 @@ public:
     std::string listToString1(std::list<T> &v);
 
     std::string listToString2(std::list<T> &v);
-
-    void run(Iterator &it) ;
-
-    ListImpl();
-
-    virtual ~ListImpl();
 
 };
 
