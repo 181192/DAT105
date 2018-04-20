@@ -1,3 +1,0 @@
-/media/k/Data/Utvikling/Skole/DAT105/Lab5/VectorSolution/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/media/k/Data/Utvikling/Skole/DAT105/Lab5/VectorSolution/cmake-build-debug/CMakeFiles/edit_cache.dir
-/media/k/Data/Utvikling/Skole/DAT105/Lab5/VectorSolution/cmake-build-debug/CMakeFiles/VectorSolution.dir
