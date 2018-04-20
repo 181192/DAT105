@@ -22,8 +22,8 @@ int main() {
 
     auto vectorImpl = new VectorImpl<std::vector<int>, int>();
     auto listImpl = new ListImpl<std::list<int>, int>();
-    auto iteratorImplVector = new IteratorImpl<std::vector<int>, int>();
-    auto iteratorImplList = new IteratorImpl<std::list<int>, int>();
+//    auto iteratorImplVector = new IteratorImpl<std::vector<int>, int>();
+//    auto iteratorImplList = new IteratorImpl<std::list<int>, int>();
 
     std::vector<int> v{1, 9, 7, 3, 5, 6, 2, 8, 4};
     std::list<int> list{1, 9, 7, 3, 5, 6, 2, 8, 4};
@@ -37,8 +37,8 @@ int main() {
     vectorImpl->run(v);
     listImpl->run(list);
 
-    iteratorImplVector->run(v);
-    iteratorImplList->run(list);
+//    iteratorImplVector->run(v);
+//    iteratorImplList->run(list);
 
     return 0;
 }

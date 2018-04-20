@@ -14,7 +14,7 @@ template<class Iterator, class T>
 class ListImpl {
 public:
 
-    void run(Iterator &it) ;
+    void run(Iterator &it);
 
     ListImpl();
 
@@ -37,7 +37,7 @@ private:
 };
 
 template<class Iterator, class T>
-int ListImpl<Iterator, T>::listSum1(std::list<T> v)  {
+int ListImpl<Iterator, T>::listSum1(std::list<T> v) {
     int sum = 0;
     for (T e : v)
         sum += e;
@@ -58,11 +58,11 @@ void ListImpl<Iterator, T>::sortList1(std::list<T> &v) {
 
 template<class Iterator, class T>
 void ListImpl<Iterator, T>::sortList2(std::list<T> &v) {
-    v.sort([](T a, T b) { return a < b; });
+    v.sort([](T a, T b) { return a > b; });
 }
 
 template<class Iterator, class T>
-std::string ListImpl<Iterator, T>::listToString1(std::list<T> &v)  {
+std::string ListImpl<Iterator, T>::listToString1(std::list<T> &v) {
     std::stringstream ss;
     for (T e : v) {
         ss << e << " ";
@@ -73,7 +73,7 @@ std::string ListImpl<Iterator, T>::listToString1(std::list<T> &v)  {
 template<class Iterator, class T>
 std::string ListImpl<Iterator, T>::listToString2(std::list<T> &v) {
     std::stringstream ss;
-    std::for_each(v.begin(), v.end(), [&](T &e) {
+    std::for_each(v.begin(), v.end(), [&](T e) {
         ss << e << " ";
     });
 }
