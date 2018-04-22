@@ -9,8 +9,8 @@ class GameEngine : public IGameEngine
 public:
     GameEngine();
     void init() override;
-    void guessNumber(int i) override;
-    void findNumberOfGuess() override;
+    int guessNumber(int i) override;
+    int findNumberOfGuess() override;
 
 private:
     int secretNumber;
