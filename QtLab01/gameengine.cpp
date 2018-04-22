@@ -1,20 +1,32 @@
 #include "gameengine.h"
 #include <QDebug>
 
-void GameEngine::buttonPressed(int i)
+
+
+GameEngine::GameEngine()
 {
-    i++;
+    srand(time(0));
 }
 
-void GameEngine::startNewGame()
+void GameEngine::init()
 {
-    qInfo() << "class game - startNewGame method";
+    secretNumber = rand() % 10;
+    numberOfGuess = 0;
 
 }
 
-void GameEngine::gameFinished()
+int GameEngine::guessNumber(int i)
 {
-
+    numberOfGuess++;
+    if (i < secretNumber )
+        return -1;
+    else if ( i < secretNumber )
+        return 1;
+    else
+        return 0;
 }
 
-
+int GameEngine::findNumberOfGuess()
+{
+    return numberOfGuess;
+}
