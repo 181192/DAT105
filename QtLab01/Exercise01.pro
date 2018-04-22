@@ -26,8 +26,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         gamegui.cpp \
-    gameengine.cpp \
-    igameengine.cpp
+    gameengine.cpp
 
 HEADERS += \
         gamegui.h \
