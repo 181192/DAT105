@@ -10,30 +10,25 @@
 HangmanWidget::HangmanWidget(IHangmanLogic *hl, QWidget *parent) : QWidget(parent)
 {
     engine = hl;
+    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ";
+    alphabetButtons = new std::vector<QPushButton*>();
 
-    QHBoxLayout *outerLayout = new QHBoxLayout(this);
-    QVBoxLayout *rightColumn = new QVBoxLayout();
-    QVBoxLayout *leftColumn = new QVBoxLayout();
+    outerLayout = new QHBoxLayout(this);
+    rightColumn = new QVBoxLayout();
+    leftColumn = new QVBoxLayout();
+    alphabetGrid = new QGridLayout();
+
+    wordLabel = new QLabel("Example");
+    attempsLabel = new QLabel("Attempts left: 3");
+    statusLabel = new QLabel("Status Label");
+    hangmanLabel = new QLabel();
 
     outerLayout->addLayout(leftColumn);
     outerLayout->addLayout(rightColumn);
 
-    QLabel *wordLabel = new QLabel("Example");
-    QLabel *attempsLabel = new QLabel("Attempts left: 3");
-    QLabel *statusLabel = new QLabel("Status Label");
-    QLabel *hangmanLabel = new QLabel();
-
-    QPushButton *p = new QPushButton("Eyy");
-
-    QString alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ";
-    auto alphabetButtons = new std::vector<QPushButton*>();
-
-
     leftColumn->addWidget(wordLabel);
     leftColumn->addWidget(attempsLabel);
     leftColumn->addWidget(statusLabel);
-
-    QGridLayout *alphabetGrid = new QGridLayout();
 
     int row, column, i = 0;
     for (QChar c : alphabet) {
@@ -46,16 +41,11 @@ HangmanWidget::HangmanWidget(IHangmanLogic *hl, QWidget *parent) : QWidget(paren
         alphabetGrid->addWidget(alphabetButtons->back(), row, ++column);
     }
 
-
     leftColumn->addLayout(alphabetGrid);
 
-    QPixmap image;
     image.load("../images/hangman0.png");
     hangmanLabel->setPixmap(image);
     rightColumn->addWidget(hangmanLabel);
-
-
-
 
 }
 
