@@ -7,13 +7,14 @@ MainWindow::MainWindow(IHangmanLogic *hl, QWidget *parent) : QMainWindow(parent)
 {
     widget = new HangmanWidget(hl, this);
 
-    QMenu* file_menu = new QMenu("File", this);
-    QMenu* option_menu = new QMenu("Options", this);
-    QAction* quit_action = file_menu->addAction("Quit");
-    QMenuBar* menu_bar = new QMenuBar();
+    auto *fileMenu = new QMenu("&File", this);
+    auto *optionMenu = new QMenu("&Options", this);
+    auto *closeAction = new QAction(fileMenu->addAction("&Exit", this, &MainWindow::close, Qt::CTRL+Qt::Key_Q));
+    auto *menu_bar = new QMenuBar();
+
     setMenuBar(menu_bar);
-    menu_bar->addMenu(file_menu);
-    menu_bar->addMenu(option_menu);
+    menu_bar->addMenu(fileMenu);
+    menu_bar->addMenu(optionMenu);
 
     this->setCentralWidget(widget);
 }
