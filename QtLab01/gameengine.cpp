@@ -20,7 +20,7 @@ int GameEngine::guessNumber(int i)
     numberOfGuess++;
     if (i < secretNumber )
         return -1;
-    else if ( i < secretNumber )
+    else if ( i > secretNumber )
         return 1;
     else
         return 0;

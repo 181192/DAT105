@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QPushButton>
+#include <vector>
 #include "igameengine.h"
 
 class GameGui : public QWidget
@@ -15,7 +16,7 @@ public:
 
 private:
     int NUMBER_OF_BUTTONS;
-    QPushButton **buttons;
+    std::vector<QPushButton *> *buttons;
     QPushButton *newGameButton;
     IGameEngine *engine;
 
