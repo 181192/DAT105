@@ -32,5 +32,4 @@ SOURCES += \
 HEADERS += \
         mainwindow.h \
     hangmanwidget.h \
-    hangmanlogic.h \
-    ihangmanlogic.h
+    hangmanlogic.h

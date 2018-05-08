@@ -1,7 +1,7 @@
 #ifndef HANGMANWIDGET_H
 #define HANGMANWIDGET_H
 
-#include "ihangmanlogic.h"
+#include "hangmanlogic.h"
 #include <QWidget>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
@@ -14,10 +14,10 @@ class HangmanWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit HangmanWidget(IHangmanLogic *hl, QWidget *parent = nullptr);
+    explicit HangmanWidget(HangmanLogic *hl, QWidget *parent = nullptr);
 
 private:
-    IHangmanLogic *engine;
+    HangmanLogic *engine;
 
     QHBoxLayout *outerLayout;
     QVBoxLayout *rightColumn;
@@ -34,16 +34,22 @@ private:
     QPixmap image;
     QString alphabet;
 
+    bool gameOverBool = true;
+
+    QPixmap getHangmanImage(unsigned int num);
+
 signals:
-    void guessMade(char c);
+    void guessMade(QChar c);
 
 public slots:
     void reset();
     void setHiddenMessage(QString msg);
-    void buttonPressed(char c);
-    void setButtonGreen(char c);
-    void setButtonRed(char c);
+    void setStatusMessage(QString msg);
+    void buttonPressed();
+    void setButtonGreen();
+    void setButtonRed();
     void setAttemptsLeft(unsigned int attemptsLeft);
+    void gameOver(void);
 };
 
 #endif // HANGMANWIDGET_H

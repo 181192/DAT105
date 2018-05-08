@@ -8,11 +8,15 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
+    HangmanLogic *engine;
+
 public:
-    MainWindow(IHangmanLogic *hl, QWidget *parent = 0);
+    MainWindow(HangmanLogic *hl, QWidget *parent = 0);
     ~MainWindow();
 private:
     HangmanWidget *widget;
+private slots:
+    void startNewGame();
 };
 
 #endif // MAINWINDOW_H
