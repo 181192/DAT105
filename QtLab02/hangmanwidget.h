@@ -28,7 +28,7 @@ private:
     QLabel *statusLabel;
     QLabel *hangmanLabel;
 
-    std::vector<QPushButton*> *alphabetButtons;
+    QList<QPushButton*> *alphabetButtons;
     QGridLayout *alphabetGrid;
 
     QPixmap image;
@@ -46,8 +46,8 @@ public slots:
     void setHiddenMessage(QString msg);
     void setStatusMessage(QString msg);
     void buttonPressed();
-    void setButtonGreen();
-    void setButtonRed();
+    void setButtonGreen(QChar c);
+    void setButtonRed(QChar c);
     void setAttemptsLeft(unsigned int attemptsLeft);
     void gameOver(void);
 };
