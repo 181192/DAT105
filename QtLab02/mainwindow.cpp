@@ -6,6 +6,8 @@
 
 MainWindow::MainWindow(HangmanLogic *hl, QWidget *parent) : QMainWindow(parent)
 {
+    resize(this->sizeHint());
+
     engine = hl;
     widget = new HangmanWidget(hl, this);
     setCentralWidget(widget);
@@ -15,7 +17,7 @@ MainWindow::MainWindow(HangmanLogic *hl, QWidget *parent) : QMainWindow(parent)
     auto *menu_bar = new QMenuBar();
 
     new QAction(optionMenu->addAction("&New Game", this, &MainWindow::startNewGame, Qt::CTRL | Qt::Key_N));
-    new QAction(optionMenu->addAction("&Restart Game", hl, &HangmanLogic::restartGame, Qt::CTRL | Qt::Key_R));
+    new QAction(optionMenu->addAction("&Restart Game", widget, &HangmanWidget::reset, Qt::CTRL | Qt::Key_R));
     new QAction(fileMenu->addAction("&Exit", this, &MainWindow::close, Qt::CTRL | Qt::Key_Q));
 
 //    auto *newGameAction = new QAction(optionMenu->addAction("&New Game", hl, &HangmanLogic::startNewGame, Qt::CTRL | Qt::Key_N));
