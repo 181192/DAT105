@@ -4,14 +4,13 @@
 #include <QVBoxLayout>
 #include <QPushButton>
 #include <QLabel>
-#include <vector>
 #include <QDebug>
 
 HangmanWidget::HangmanWidget(HangmanLogic *hl, QWidget *parent) : QWidget(parent)
 {
     engine = hl;
     alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ";
-    alphabetButtons = new std::vector<QPushButton*>();
+    alphabetButtons = new QList<QPushButton*>();
 
     outerLayout = new QHBoxLayout(this);
     rightColumn = new QVBoxLayout();
@@ -51,6 +50,9 @@ HangmanWidget::HangmanWidget(HangmanLogic *hl, QWidget *parent) : QWidget(parent
 
 void HangmanWidget::reset()
 {
+    for (auto btn = alphabetButtons->begin(); btn != alphabetButtons->end(); btn++)
+        (*btn)->setStyleSheet("");
+
     emit engine->restartGame();
 }
 
@@ -72,16 +74,18 @@ void HangmanWidget::buttonPressed() {
 
 }
 
-void HangmanWidget::setButtonGreen()
+void HangmanWidget::setButtonGreen(QChar c)
 {
-    auto *button = (QPushButton*) sender();
-    button->setStyleSheet("* { background-color: green }");
+    for (auto btn = alphabetButtons->begin(); btn != alphabetButtons->end(); btn++)
+        if ((*btn)->text().at(0) == c)
+            (*btn)->setStyleSheet("* { background-color: green }");
 }
 
-void HangmanWidget::setButtonRed()
+void HangmanWidget::setButtonRed(QChar c)
 {
-    auto *button = (QPushButton*) sender();
-    button->setStyleSheet("* { background-color: red }");
+    for (auto btn = alphabetButtons->begin(); btn != alphabetButtons->end(); btn++)
+        if ((*btn)->text().at(0) == c)
+            (*btn)->setStyleSheet("* { background-color: red }");
 }
 
 void HangmanWidget::setAttemptsLeft(unsigned int attemptsLeft)
