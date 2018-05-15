@@ -6,6 +6,8 @@
 
 int main(int argc, char *argv[])
 {
+    QApplication::setAttribute(Qt::AA_DisableHighDpiScaling);
+
     QApplication a(argc, argv);
     HangmanLogic hl;
     MainWindow w(&hl);
